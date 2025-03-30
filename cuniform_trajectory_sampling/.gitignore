@@ -1,0 +1,6 @@
+*.pkl
+*.pickle
+*.mp4
+*.pdf
+*.svg
+__pycache__
