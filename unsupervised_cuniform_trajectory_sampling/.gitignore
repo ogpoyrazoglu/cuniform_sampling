@@ -1,0 +1,13 @@
+Results/
+Experiments/
+reach_data_na5_t4.01_ts0.2_20241010_1801.pkl
+reach_data_v_2.0seed_-1_grid_0.10_0.10_9.00deg_na5_t2.01_ts0.1.pkl
+Dubins_Car_Uniformity/mppi_trajs
+__pycache__
+*.pkl
+*.pickle
+Datasets/
+Random_Walk_Uniformity/Models/
+Random_Walk_Unsupervised/Unsupervised_NN/
+Dubins_Car_Uniformity/Models/
+Dubins_Car_Uniformity/Trajectories
