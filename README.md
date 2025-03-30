@@ -18,7 +18,7 @@ This repository is organized into four main directories that each serve a specif
 
 - **simulations**: Provides simulation environments and configuration files to test and validate our approaches under various conditions.
 
-For detailed information about each folder, please look at the readme files in folders.
+For detailed information about each folder, please look at readme files in folders.
 
 
 
