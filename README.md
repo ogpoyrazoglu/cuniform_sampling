@@ -16,7 +16,7 @@ This repository is organized into four main directories that each serve a specif
   - **unsupervised_cuniform_trajectory_sampling**: Contains implementations and scripts related to our trajectory sampling method in [2].
 - **real_world_ros_implementations**: Provides ROS2 implementations for deploying our algorithms in real-world scenarios.
 
-- **simulations**: Provides simulation environments and configuration files to test and validate our approaches under various conditions.
+- **simulations**: Provides simulation environments and configuration files to test and validate our approaches under various conditions. (We make them availabe shortly.)
 
 For detailed information about each folder, please look at readme files in folders.
 
