@@ -6,9 +6,9 @@ This repository is the implementation and models of NN-CUniform which is part of
 
 For training the model of NN-CUniform for F1tenth. Please follow the following steps-
 
-1. Get the Level sets config file using the following repository - "https://github.umn.edu/cao00125/traj_sampling.git"
+1. Get the Level sets Pickle file using the c_uniform_sampling.py code from cuniform_trajectory_sampling folder or use the pickle file added to the Folder
 2. cd Dubins_Car_Uniformity
-3. Change the path of config file to your path
+3. Change the path of pickle file to your path
 4. Change the save folder path
 5. Run the following command-
 ```
@@ -19,7 +19,7 @@ python Neural_C_Uniform.py
 
 For sampling the trajectories, follow the following steps
 
-1. Get the Level sets config file using the following repository - "https://github.umn.edu/cao00125/traj_sampling.git"
+1. Get the Level sets Pickle file using the c_uniform_sampling.py code from cuniform_trajectory_sampling folder or use the pickle file added to the Folder
 2. Change the model path to your path
 3. Change the time horizon, discretization and number of trajectories to your requirement
 4. Run the following command
@@ -35,7 +35,7 @@ python NN_graph_trajectory_sampling.py
 
 For understanding the uniformity % of your model, please follow the following steps
 
-1. Get the Level sets config file using the following repository - "https://github.umn.edu/cao00125/traj_sampling.git"
+1. Get the Level sets Pickle file using the c_uniform_sampling.py code from cuniform_trajectory_sampling folder or use the pickle file added to the Folder
 2. Change the model path to your path
 3. Run the following command
 ```
@@ -46,7 +46,7 @@ python Uniformity_analysis.py
 
 For getting the visualization, similar to the paper. Please follow the following steps
 
-1. Get the Level sets config file using the following repository - "https://github.umn.edu/cao00125/traj_sampling.git"
+1. Get the Level sets Pickle file using the c_uniform_sampling.py code from cuniform_trajectory_sampling folder or use the pickle file added to the Folder
 2. Change the model path to your path
 3. Change the trajectories path to your path
 3. Run the following command
