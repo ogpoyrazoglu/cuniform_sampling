@@ -25,6 +25,11 @@
 
 <body>
 
+<!-- Dark Mode Toggle -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="theme-toggle-icon" id="themeIcon">&#9790;</span>
+</button>
+
 <!-- Hero / Welcome Section -->
 <section class="hero is-bold home-hero">
     <div class="hero-body">
@@ -223,5 +228,28 @@
     </div>
 </footer>
 
+<script>
+(function() {
+    var toggle = document.getElementById('themeToggle');
+    var icon = document.getElementById('themeIcon');
+    var stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        icon.innerHTML = '&#9788;';
+    }
+    toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            icon.innerHTML = '&#9790;';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            icon.innerHTML = '&#9788;';
+        }
+    });
+})();
+</script>
 </body>
 </html>

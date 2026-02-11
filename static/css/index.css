@@ -503,6 +503,158 @@ body {
   color: #222;
 }
 
+/* ========================================
+   Dark Mode Toggle Button
+   ======================================== */
+.theme-toggle {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.theme-toggle-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* ========================================
+   Dark Mode Styles
+   ======================================== */
+[data-theme="dark"] body {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffd43b;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Announcement */
+[data-theme="dark"] .announcement-banner {
+  background: #1e2a3a !important;
+  border-left-color: hsl(204, 86%, 45%);
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] .announcement-banner p {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] .announcement-banner strong {
+  color: #fff !important;
+}
+
+/* About Section */
+[data-theme="dark"] .about-section {
+  background: #1a1a1a;
+}
+
+[data-theme="dark"] .about-text {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .about-text strong {
+  color: #e8e8e8;
+}
+
+[data-theme="dark"] .about-video-wrapper {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Section Headings */
+[data-theme="dark"] .section-heading {
+  color: #e8e8e8;
+}
+
+[data-theme="dark"] .section-heading::after {
+  background: hsl(204, 86%, 45%);
+}
+
+/* Cards Section */
+[data-theme="dark"] .cards-section {
+  background: #121212;
+}
+
+[data-theme="dark"] .paper-card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme="dark"] .paper-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .paper-card .card-image img {
+  background: #2a2a2a;
+}
+
+[data-theme="dark"] .paper-card-title {
+  color: #e8e8e8;
+}
+
+[data-theme="dark"] .paper-card-desc {
+  color: #999 !important;
+}
+
+[data-theme="dark"] .paper-card-disabled {
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .paper-card-disabled:hover {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Glow animation in dark mode */
+[data-theme="dark"] .paper-card.paper-card-glow {
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] .paper-card.paper-card-glow:hover {
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.25);
+}
+
+/* Footer */
+[data-theme="dark"] .home-footer {
+  background: #1a1a1a;
+}
+
+[data-theme="dark"] .home-footer p {
+  color: #888 !important;
+}
+
+[data-theme="dark"] .footer-link {
+  color: #aaa;
+}
+
+[data-theme="dark"] .footer-link:hover {
+  color: #ddd;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .home-title {
