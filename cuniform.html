@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+    <!-- Replace the content tag with appropriate information -->
+    <meta name="description"
+          content="MoRF avatars are created from short monocular videos and can be rendered in real-time (30+ FPS, 640x640px) on mobile devices">
+    <meta property="og:title" content="C-Uniform Trajectory Sampling For Fast Motion Planning"/>
+    <meta property="og:description"
+          content="C-Uniform Trajectory Sampling For Fast Motion Planning"/>
+    <meta property="og:url" content="https://github.com/ogpoyrazoglu/cuniform_sampling"/>
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+    <meta property="og:image" content="static/image/your_banner_image.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+
+
+    <meta name="twitter:title" content="C-Uniform Trajectory Sampling For Fast Motion Planning">
+    <meta name="twitter:description"
+          content="MoRF avatars are created from short monocular videos and can be rendered in real-time (30+ FPS, 640x640px) on mobile devices">
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+    <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Keywords for your paper to be indexed by-->
+    <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>C-Uniform Trajectory Sampling For Fast Motion Planning</title>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<!-- Back to Home Navigation -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                <span>&nbsp;Back to Home</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">
+                        <a style="color:black;">C-Uniform Trajectory Sampling For Fast Motion Planning</a>
+                    </h1>
+                    <div class="is-size-5 publication-authors">
+                        <!-- Paper authors -->
+                        <span class="author-block">
+                            <div class="author-portrait">
+                              <img class="img-fluid mb-3" src="static/images/avatar/goktug.jpg" alt="">
+                            </div>
+                            <a href="https://www.linkedin.com/in/ogpoyrazoglu/" target="_blank">O. Goktug<br>Poyrazoglu</a>
+                        </span>
+
+                        <span class="author-block">
+                            <div class="author-portrait">
+                              <img class="img-fluid mb-3" src="static/images/avatar/yukang.jpg" alt="">
+                            </div>
+                            <a href="https://www.linkedin.com/in/yukang-cao-012177220/" target="_blank">Yukang<br>Cao</a>
+                        </span>
+
+                        <span class="author-block">
+                            <div class="author-portrait">
+                              <img class="img-fluid mb-3" src="static/images/avatar/volkan.jpg" alt="">
+                            </div>
+                            <a href="https://scholar.google.com/citations?user=Q5KT-hEAAAAJ&hl=en" target="_blank">Volkan<br>Isler</a>
+                        </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">Robotic Sensor Network Lab, University of Minnesota</span>
+                    </div>
+
+                    <!-- ArXiv Link -->
+                    <span class="link-block">
+                        <a href="https://arxiv.org/abs/2409.12266" target="_blank"
+                           class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                              <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>Paper</span>
+                        </a>
+                    </span>
+
+                    <!-- Github link -->
+                    <span class="link-block">
+                        <a href="https://github.com/ogpoyrazoglu/cuniform_sampling"
+                           class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                              <i class="ai ai-github"></i>
+                            </span>
+                          <span>Code</span>
+                          </a>
+                      </span>
+
+                    <!-- Github link -->
+                    <br>
+
+                    <span class="link-block">
+                        <a href="https://rahulmoorthy19.github.io/cu_mppi/" target="_blank"
+                           class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                              <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>Follow up Work Website</span>
+                        </a>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We study the problem of sampling robot trajectories and introduce the notion of C-Uniformity. As opposed to the standard method of uniformly sampling control inputs
+                        (which lead to biased samples of the configuration space), C-Uniform trajectories are generated by control actions which
+                        lead to uniform sampling of the configuration space. After presenting an intuitive closed-form solution to generate C-
+                        Uniform trajectories for the 1D random-walker, we present a network-flow based optimization method to precompute C-
+                        Uniform trajectories for general robot systems. We apply the notion of C-Uniformity to the design of Model Predictive Path
+                        Integral controllers. Through simulation experiments, we show that using C-Uniform trajectories significantly improves the
+                        performance of MPPI-style controllers, achieving up to 40% coverage performance gain compared to the best baseline. We
+                        demonstrate the practical applicability of our method with an implementation on a 1/10th scale racer.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+        <!-- Paper video. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <!-- include a figure -->
+                <video poster="" id="hist" autoplay controls muted loop playsinline width="75%" height="75%">
+                    <source src="./static/videos/hist_video.mp4" type="video/mp4">
+                </video>
+                <p>
+                    Comparison of uniformly sampling the actions versus
+C-Uniform trajectories for the 1-D random walk system
+                </p>
+            </div>
+        </div>
+
+        <!--/ Paper video. -->
+    </div>
+</section>
+
+<!-- Spacer for 2 line spaces -->
+<div style="height: 2em;"></div>
+
+<!-- Teaser video-->
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+
+            <h2 class="title has-text-centered">Overview Video</h2>
+
+            <div style="text-align: center;">
+                <video poster="" id="demo" autoplay controls muted loop playsinline width="75%" height="75%">
+                    <source src="./static/videos/icra2025_cuniform_video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- End image carousel -->
+        </div>
+    </div>
+</section>
+<!-- End teaser video -->
+ <!-- Why: explain why model-based diffusion is important -->
+    <!-- 1. generalize beyond the data  with model information -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">What is C-Uniformity?</h2>
+                        <p>
+                            <b>
+                                C-Uniformity is a new notion for sampling robot trajectories
+                            </b>
+                            where we seek to generate trajectories with the following property: Let  \( L(t) \) be the set of configurations reachable by the robot in time \( t \). C-uniform trajectories are a collection of trajectories such that, for each \( t \), configurations in \( L(t) \) are sampled uniformly at random.
+                        </p>
+                        <p>
+                            <b>
+                                General Methodology:
+                            </b>
+                            We generate level sets by
+                            densely sampling control inputs and tiling \( \delta \)-measure regions
+                            over each level set. To compute the action probabilities, a
+                            flow network is generated whose maximum-flow yields C-Uniformity.
+                        </p>
+                        <!-- include video traj_annealing_combined.mp4 -->
+
+                        <figure class="image">
+                            <video poster="" id="method" autoplay controls muted loop playsinline height="75%">
+                                <source src="./static/videos/cuniforrm_method.mp4" type="video/mp4">
+                            </video>
+                            <!-- add caption -->
+                            <p>
+
+                            </p>
+                        </figure>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Coverage Analysis</h2>
+            <!-- Video section -->
+            <div class="columns is-centered has-text-centered">
+
+                <!-- First video -->
+                <div class="column is-half">
+                    <video poster="" id="video1" autoplay controls muted loop playsinline width="100%">
+                        <source src="./static/videos/uniform_sampled_actions_trajectories_1000_animation.mp4" type="video/mp4">
+                    </video>
+                    <p><strong>Trajectories with Uniformly Selected Actions</strong></p>
+                </div>
+
+                <!-- Second video -->
+                <div class="column is-half">
+                    <video poster="" id="video2" autoplay controls muted loop playsinline width="100%">
+                        <source src="./static/videos/Network_Flow_C_Uniform_1000_animation.mp4" type="video/mp4">
+                    </video>
+                    <p><strong>Trajectories with C-Uniform Trajectory Sampling</strong></p>
+                </div>
+            </div>
+
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Coverage Performance Comparison of MPPI, log-MPPI, and C-Uniform at Varying Sample Sizes</h2>
+                    <div class="table-container">
+                        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" class="has-text-centered">Number of Sampled Trajectories</th> <!-- Merged rows -->
+                                    <th colspan="3" class="has-text-centered">MPPI</th>
+                                    <th colspan="3" class="has-text-centered">log-MPPI</th>
+                                    <th rowspan="2" class="has-text-centered wide-column" style="width: 15%;">C-Uniform</th> <!-- Merged rows -->
+                                </tr>
+                                <tr>
+                                    <th class="has-text-centered">Low</th>
+                                    <th class="has-text-centered">Medium</th>
+                                    <th class="has-text-centered">High</th>
+                                    <th class="has-text-centered">Low</th>
+                                    <th class="has-text-centered">Medium</th>
+                                    <th class="has-text-centered">High</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="has-text-centered">250</td>
+                                    <td class="has-text-centered">21 (0.09%)</td>
+                                    <td class="has-text-centered">86 (0.36%)</td>
+                                    <td class="has-text-centered">329 (1.37%)</td>
+                                    <td class="has-text-centered">74 (0.31%)</td>
+                                    <td class="has-text-centered">271 (1.13%)</td>
+                                    <td class="has-text-centered">674 (2.81%)</td>
+                                    <td class="has-text-centered"><strong>737 (3.08%)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-centered">500</td>
+                                    <td class="has-text-centered">23 (0.10%)</td>
+                                    <td class="has-text-centered">94 (0.39%)</td>
+                                    <td class="has-text-centered">356 (1.48%)</td>
+                                    <td class="has-text-centered">79 (0.33%)</td>
+                                    <td class="has-text-centered">345 (1.44%)</td>
+                                    <td class="has-text-centered">897 (3.74%)</td>
+                                    <td class="has-text-centered"><strong>995 (4.15%)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-centered">1000</td>
+                                    <td class="has-text-centered">26 (0.11%)</td>
+                                    <td class="has-text-centered">103 (0.43%)</td>
+                                    <td class="has-text-centered">410 (1.71%)</td>
+                                    <td class="has-text-centered">76 (0.32%)</td>
+                                    <td class="has-text-centered">390 (1.63%)</td>
+                                    <td class="has-text-centered">1140 (4.75%)</td>
+                                    <td class="has-text-centered"><strong>1382 (5.83%)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-centered">2500</td>
+                                    <td class="has-text-centered">28 (0.12%)</td>
+                                    <td class="has-text-centered">112 (0.47%)</td>
+                                    <td class="has-text-centered">529 (2.20%)</td>
+                                    <td class="has-text-centered">93 (0.39%)</td>
+                                    <td class="has-text-centered">470 (1.96%)</td>
+                                    <td class="has-text-centered">1420 (5.92%)</td>
+                                    <td class="has-text-centered"><strong>1851 (7.71%)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-centered">5000</td>
+                                    <td class="has-text-centered">27 (0.11%)</td>
+                                    <td class="has-text-centered">120 (0.50%)</td>
+                                    <td class="has-text-centered">584 (2.43%)</td>
+                                    <td class="has-text-centered">100 (0.42%)</td>
+                                    <td class="has-text-centered">525 (2.19%)</td>
+                                    <td class="has-text-centered">1637 (6.82%)</td>
+                                    <td class="has-text-centered"><strong>2271 (9.46%)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-centered">10000</td>
+                                    <td class="has-text-centered">29 (0.12%)</td>
+                                    <td class="has-text-centered">131 (0.55%)</td>
+                                    <td class="has-text-centered">653 (2.72%)</td>
+                                    <td class="has-text-centered">104 (0.43%)</td>
+                                    <td class="has-text-centered">568 (2.37%)</td>
+                                    <td class="has-text-centered">1838 (7.66%)</td>
+                                    <td class="has-text-centered"><strong>2578 (10.74%)</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title is-3 has-text-centered">Real World Experiments</h2>
+                <div class="columns is-multiline">
+                    <div class="column is-one-third">
+                        <h3 class="title is-5 has-text-centered">C-Uniform (Cluttered)</h3>
+                        <video poster="" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/clutterred_cuniform.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="column is-one-third">
+                        <h3 class="title is-5 has-text-centered">MPPI (Cluttered)</h3>
+                        <video poster="" autoplay controls muted loop playsinline height="50%">
+                            <source src="./static/videos/clutterred_mppi.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="column is-one-third">
+                        <h3 class="title is-5 has-text-centered">log-MPPI (Cluttered)</h3>
+                        <video poster="" autoplay controls muted loop playsinline height="50%">
+                            <source src="./static/videos/clutterred_logmppi.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="column is-one-third">
+                        <h3 class="title is-5 has-text-centered">C-Uniform (U-Shaped)</h3>
+                        <video poster="" autoplay controls muted loop playsinline height="50%">
+                            <source src="./static/videos/ushaped_cuniform.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="column is-one-third">
+                        <h3 class="title is-5 has-text-centered">MPPI (U-Shaped)</h3>
+                        <video poster="" autoplay controls muted loop playsinline height="50%">
+                            <source src="./static/videos/ushaped_mppi.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="column is-one-third">
+                        <h3 class="title is-5 has-text-centered">log-MPPI (U-Shaped)</h3>
+                        <video poster="" autoplay controls muted loop playsinline height="50%">
+                            <source src="./static/videos/ushaped_logmppi.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="BibTeX"></section>
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>
+                @misc{poyrazoglu2024cuniformtrajectorysamplingfast,
+                    title={C-Uniform Trajectory Sampling For Fast Motion Planning},
+                    author={O. Goktug Poyrazoglu and Yukang Cao and Volkan Isler},
+                    year={2024},
+                    eprint={2409.12266},
+                    archivePrefix={arXiv},
+                    primaryClass={cs.RO},
+                    url={https://arxiv.org/abs/2409.12266},
+              }
+            </code></pre>
+        </div>
+    </section>
+
+</body>
+</html>
