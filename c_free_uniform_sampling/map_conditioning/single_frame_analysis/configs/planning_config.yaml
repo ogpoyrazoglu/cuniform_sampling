@@ -1,0 +1,45 @@
+# Configuration for Single-Frame Planning Analysis
+
+# Path to the input scenario dataset folder (e.g., dataset_polygon_uniformity_localized_gt_dt0.1)
+# This path is relative to the PROJECT_ROOT (the root directory of the entire project).
+# If you place the dataset folder inside map_conditioning/, the path would be:
+# dataset_path: "map_conditioning/your_dataset_folder_name"
+dataset_path: "map_conditioning/dataset_polygon_uniformity_localized_gt_dt0.1"
+
+# List of samplers to test
+# Names must match the keys in the CONTROLLERS_FACTORY in run_planning_analysis.py
+samplers_to_test:
+  - "C-Free-Uniform"
+  - "C-Uniform"
+  - "MPPI"
+  - "Log-MPPI"
+
+# List of sampling budgets (K) to test
+sampling_budgets:
+  # - 128
+  # - 256
+  - 512
+  # - 1024
+  # - 2048
+  # - 4096
+
+# Goal tolerance (meters) for determining success
+goal_tolerance: 0.15
+
+# Monte Carlo Trials: Number of times to run each (Scenario, Sampler, Budget) combination
+# with different seeds to average out stochastic performance variations
+num_mc_trials: 10 
+
+# Visualization Debugging Mode
+# If true, generates a detailed visualization for the FIRST Monte Carlo trial of every combination
+# WARNING: Significantly increases runtime and storage usage
+visualization_debug: True
+
+# Seed for reproducibility (e.g., goal selection, sampler initialization)
+analysis_seed: 2025
+
+# Path to the master experiment configuration file
+# This is used as the base configuration for initializing controllers
+# ensuring consistency in parameters (e.g., model paths, cost weights)
+# This path is also relative to the PROJECT_ROOT
+base_experiment_config_path: "map_conditioning/navigation_experiments/configs/experiment_config.yaml"

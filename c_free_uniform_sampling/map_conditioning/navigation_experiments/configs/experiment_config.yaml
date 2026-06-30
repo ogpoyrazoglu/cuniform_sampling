@@ -1,0 +1,240 @@
+#===============================================================================
+# Experiment Configuration (shared across controllers)
+#===============================================================================
+# Determines the source of perception data for all controllers
+# Options: "lidar" (simulates sensor), "ground_truth" (perfect local map)
+# perception_mode: "ground_truth"
+perception_mode: "lidar"
+
+controllers_to_test:
+  - "CFU_MPPI" # C-Free-Uniform MPPI
+  - "CFU_LOGMPPI"
+  - "CU_MPPI"
+  - "CU_LOGMPPI"
+  - "MPPI"
+  - "LOGMPPI"
+  # - "cuniform_map_conditioned"
+  # - "cuniform_unsupervised_openspace"
+  # - "mppi"
+  # - "log_mppi"
+
+# global map parameters
+global_map_resolution: 0.05   # global map grid resolution (meters/cell)
+# global_origin: [-0.5, -2.25]  
+global_origin: [0.0, 0.0]   # NOTE: make sure this is set to 0, 0 for polygon environments
+
+# Experiment Suite Configuration
+experiment_suite:
+  # Options: "BARN","DumbbellSweep", "BudgetSweep", "Polygon"
+  # type: "BARN"  
+  # type: "DumbbellSweep"  
+  # type: "BudgetSweep"  
+  type: "Polygon"  
+
+  trials_per_environment: 6  # Number of trials to run per environment
+  start_lin_space_padding_meters: 0.5
+  
+  barn_config: # BARN-specific configuration
+    dataset_path: "data/BARN_npy_files_0.05_padded"
+    # test_environments: [241]
+    # test_environments: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+  
+  # Define a base set of parameters for DumbbellSweep and BudgetSweep experiments
+  base_dumbbell_params: &base_dumbbell_params # dataset is generated on the fly
+    # Overall map dimensions [width, height] in grid cells.
+    map_size_cells: [300, 120]
+    # Width of the rectangular rooms on either side of the bottleneck, in grid cells.
+    room_width_cells: 70
+
+    # A list of NAVIGABLE FREE SPACE widths to test (in grid cells).
+    # A width of 'W' creates a map with a W-cell wide gap between walls.
+    # bottleneck_widths: [7, 8, 9, 10, 11, 12, 13, 14]      # Available widths in the dataset
+    bottleneck_widths: [7, 8, 9, 10]      # Available widths in the dataset
+    # bottleneck_widths: [8]      # Available widths in the dataset
+    
+  dumbbell_config: # DumbbellSweep-specific configuration  
+    # A length of 'L' creates a map with a corridor that is L cells long.
+    bottleneck_lengths: [1, 25, 50, 100]  # Available lengths in the dataset
+    # bottleneck_lengths: [1]  # Available lengths in the dataset
+
+  budget_config: # BudgetSweep-specific configuration
+    sampling_budgets_to_test: [64, 128, 256, 512, 1024, 2048]
+    fixed_bottleneck_length: 1             
+
+  polygon_config: 
+    # dataset_path: "data/Minimum_Feature_25_Dataset_Test_New_Processed"
+    dataset_path: "data/Minimum_Feature_25_Dataset_A_Star_Generated" # cleaned dataset with A* pathfinding
+    
+    # Define the file naming convention (e.g., 25_{ID}_coords.pkl)
+    file_prefix: "25_"
+    file_suffix: "_coords.pkl"
+
+    # List of environment IDs (0 to 299) to test
+    # test_environments: [0, 100, 150, 200]
+    # test_environments: [232]
+    # test_environments: [180, 185]
+    # test_environments: [191]
+    # test_environments: [152]
+    # test_environments: [298]
+    # test_environments: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    # test_environments: [121]
+    # test_environments: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+    test_environments: [218]
+
+    # Map parameters specific to the Polygon dataset
+    map_resolution: 0.05
+    map_origin: [0.0, 0.0]
+    map_size_cells: [100, 100] # should be 40 times larger than the polygon_scale_factor, e.g. set to 400x400 when scale factor is 10
+    polygon_scale_factor: 2.5  # scale factor for the polygon vertices
+
+# Simulation parameters
+horizon_T: 1.2                # Planning horizon in seconds
+dt: 0.10                      # Simulation timestep (affects all controllers)
+max_steps: 1000               # Maximum simulation steps
+goal_tolerance: 0.15          # Goal tolerance for all controllers (meters)
+seed: 2025                    # Random seed for reproducibility
+
+# Sampling parameters 
+num_rollouts: 512              # Number of control rollouts/samples
+num_vis_rollouts: 1000         # Number of rollouts for visualization
+initialization_budget_ratio: 0.5  # Fraction of sampling budget allocated to CUniform initialization (0.5 = 50%)
+
+# Vehicle parameters 
+# vehicle_length: 0.57          # Vehicle length in meters
+# vehicle_width: 0.3            # Vehicle width in meters  
+#NOTE: robot dimension is reduced for simulation experiments
+vehicle_length: 0.15          # Vehicle length in meters
+vehicle_width: 0.15           # Vehicle width in meters  
+vehicle_wheelbase: 0.32       # Wheelbase in meters
+
+# NOTE: If True, enables point robot mode (point collision)
+# ignore the vehicle_length and vehicle_width, and use point robot for collision checking
+point_robot_mode: True
+
+# Control constraints
+# If vrange[0] == vrange[1] (e.g., [1.25, 1.25]), the system runs in FIXED velocity mode.
+# If vrange[0] != vrange[1] (e.g., [0.5, 2.5]), the system runs in VARIABLE velocity mode.
+# vrange: [2.5, 2.5]            # Linear velocity range [min, max] m/s
+# vrange: [1.25, 1.25]            # Linear velocity range [min, max] m/s
+vrange: [0.5, 2.5]
+wrange: [-0.524, 0.524]       # Angular velocity range [min, max] rad/s (±30 degrees)
+
+# Cost function weights
+terminal_weight: 5.0         # Weight for terminal cost
+obs_penalty: 2000.0           # Penalty for obstacle collision
+dist_weight: 1.0             # Weight for distance-to-goal cost
+
+# A sensitivity threshold defining a "hard collision" for the trajectory evaluation process.
+# The planner calculates a summed cost by sampling the inflated_costmap under the robot's footprint grid
+# If this summed cost exceeds (footprint_area * collision_occupancy_ratio), the trajectory is heavily penalized. 
+# A lower value creates a more cautious planner that avoids inflation zones, 
+# a higher value allows for more aggressive navigation closer to obstacles.
+collision_occupancy_ratio: 0.35
+
+# The side length (in grid cells) of the square area used for cost evaluation within the planner.
+# This footprint is used to sample the inflated_costmap to calculate obstacle proximity and collision
+# costs for the thousands of candidate trajectories. It is NOT used for the final physical collision
+# check of the robot's actual state, which is handled separately by the environment manager
+# E.g., a value of 7 means a 7x7 grid is checked.
+robot_footprint_size: 3
+
+# LIDAR parameters
+lidar_scan_range: 4.0          # LIDAR scan range in meters
+lidar_num_beams: 720           # LIDAR number of beams
+
+# Local costmap parameters
+local_costmap_size: 121         # Local costmap size in grid cells
+local_costmap_resolution: 0.05  # Local costmap resolution in meters/cell
+
+#===============================================================================
+# Obstacle Inflation Parameters
+#===============================================================================
+
+# Define inflation profiles for different perception modes
+# The active profile is selected based on 'perception_mode'
+inflation_profiles:
+  lidar:
+  # --- For Planners' Cost Function Evaluation ---
+  # The distance (in grid cells) from an obstacle over which a cost penalty is applied.
+  # This creates a "soft" cost gradient that encourages the MPPI planner to find
+  # smoother, safer paths that stay away from walls.
+  # NOTE: Due to the linear decay formula used, this must be at least 2 to create a
+  # cost greater than zero in the first adjacent free-space cell.
+    inflation_radius: 3            # Obstacle inflation radius in grid cells
+  # The maximum cost value at the immediate boundary of an obstacle. The cost will
+  # then decay linearly from this value down to 0 at the inflation_radius.
+    max_inflation_value: 1.0
+    # --- For the Neural Network's SDF Generation (Hard Boundary Expansion) ---
+    # Binary dilation ("thickening" walls) for NN input. Helps close LiDAR gaps.
+    sdf_inflation_cells: 1
+    extract_boundaries: False
+
+  ground_truth:
+    # Configuration for Ground Truth mode.
+    inflation_radius: 3
+    max_inflation_value: 1.0
+    sdf_inflation_cells: 1 
+    extract_boundaries: True 
+
+# Results
+results_dir: "results"
+save_full_history: False # Set to true to save costmaps_history and sampled_trajectories (uses much more storage) 
+#NOTE: when the maximum number of steps is reached, the controller will not save the animation, otherwise it takes forever 
+save_animations: True   # Set to false to skip animation creation (much faster results)
+
+#===============================================================================
+# CONTROLLER-SPECIFIC CONFIGURATIONS
+#===============================================================================
+
+# ========================================
+# C-UNIFORM CONTROLLER CONFIGURATION
+# ========================================
+cuniform_controller:
+  # Controller type
+  controller_type: -1              # 0: Unsupervised NN C-Uniform, 1: Supervised Map conditioned NN C-Uniform; -1: null, let main script override 
+
+  # Neural network parameters (for future implementation)
+  # map_conditioned_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Jul2-09-39_last_shepherd_maxflow_0.15sdf_dt0.2_v2_rep_reso0.05/models/best_model.pth"
+  # map_conditioned_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug2-12-15_shepherd_no_data_augmentation/models/best_model.pth"
+  # map_conditioned_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug5-09-01_shepherd_50samplesPerBoundary_perturbRadius_thresholdBy6_fixed_reverserDropoutOrder_resultSimilar/models/best_model.pth"
+  # map_conditioned_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug27-11-01_no_dropout_BEST/models/best_model.pth"
+  # map_conditioned_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug28-22-58_workstation_50epochs_best_valloss/models/best_model.pth"
+  # map_conditioned_model_path: "/home/yukang/RSN/traj_sampling/map_conditioning/results_Aug29-23-18_workstation_initialSet_100augmentation_bestCollisionRate/models/best_model.pth"
+  map_conditioned_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug29-23-18_workstation_initialSet_100augmentation_bestCollisionRate/models/best_model.pth"
+
+  # feature_extractor_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Jul2-09-39_last_shepherd_maxflow_0.15sdf_dt0.2_v2_rep_reso0.05/models/best_feature_extractor.pth"
+  # feature_extractor_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug2-12-15_shepherd_no_data_augmentation/models/best_feature_extractor.pth"
+  # feature_extractor_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug5-09-01_shepherd_50samplesPerBoundary_perturbRadius_thresholdBy6_fixed_reverserDropoutOrder_resultSimilar/models/best_feature_extractor.pth"
+  # feature_extractor_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug27-11-01_no_dropout_BEST/models/best_feature_extractor.pth"
+  # feature_extractor_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug28-22-58_workstation_50epochs_best_valloss/models/best_feature_extractor.pth"
+  # feature_extractor_path: "/home/yukang/RSN/traj_sampling/map_conditioning/results_Aug29-23-18_workstation_initialSet_100augmentation_bestCollisionRate/models/best_feature_extractor.pth"
+  feature_extractor_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/results_Aug29-23-18_workstation_initialSet_100augmentation_bestCollisionRate/models/best_feature_extractor.pth"
+
+  # unsupervised_cuniform_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/unsupervised_models/MapAct_best_model_single_env.pt"
+  unsupervised_cuniform_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/unsupervised_models_openspace_v_2.5_dt0.2/MapAct_best_model_single_env.pt"
+  # unsupervised_cuniform_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/unsupervised_models_openspace_v_2.5_dt0.1/MapAct_best_model_single_env.pt"
+  # unsupervised_cuniform_model_path: "/home/yukang/RSN/traj_sampling/map_conditioning/unsupervised_models_openspace_v_2.5/MapAct_best_model_single_env.pt"
+  # unsupervised_cuniform_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/unsupervised_models_openspace_v_1.25_dt0.2/MapAct_best_model_single_env.pt"
+  # unsupervised_cuniform_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/unsupervised_models_openspace_v_1.25_dt0.1/MapAct_best_model_single_env.pt"
+  # unsupervised_cuniform_model_path: "/home/mikasa/RSN/traj_sampling/map_conditioning/unsupervised_models_openspace_v_1.25_dt0.1_t2.41/MapAct_best_model_single_env.pt"
+
+  # Action space discretization parameters
+  num_a: 1                        # Number of discrete acceleration values
+  arange: [0.0, 0.0]             # Acceleration range (min, max) - currently constant velocity
+  num_steering_angle: 31          # Number of discrete steering angle values
+
+# ========================================
+# MPPI CONTROLLER CONFIGURATION
+# ========================================
+mppi_controller:
+  mppi_type: -1            # 0: Normal distribution, 1: NLN (Normal Log-Normal) 
+
+  # Control noise parameters
+  # If vrange is variable, u_std[0] (velocity noise) should ideally be > 0.
+  u_std: [0.5, 0.10]       # Standard deviation for [linear_vel, angular_vel] noise
+  # u_std: [0.5, 0.07]       # Standard deviation for [linear_vel, angular_vel] noise
+  # u_std: [0.5, 0.05480334]       # Standard deviation for [linear_vel, angular_vel] noise
+
+  # MPPI algorithm parameters
+  lambda_weight: 0.5      # Temperature parameter for importance weighting
+  num_opt: 1              # Number of optimization iterations per solve 
