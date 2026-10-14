@@ -118,14 +118,15 @@ The C-Free-Uniform result is that the **map-conditioned C-Free-Uniform MPPI cont
 
 ## Citation
 
-If you use this code, please cite the **C-Free-Uniform** paper (arXiv:2510.16905) as the primary reference: https://arxiv.org/abs/2510.16905
+If you use this code, please cite the **C-Free-Uniform** paper as the primary reference: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11695986
 
-```bibtex
-@article{cao2025c,
-  title   = {C-Free-Uniform: A Map-Conditioned Trajectory Sampler for Model Predictive Path Integral Control},
-  author  = {Cao, Yukang and Moorthy, Rahul and Poyrazoglu, O Goktug and Isler, Volkan},
-  journal = {arXiv preprint arXiv:2510.16905},
-  year    = {2025}
+```@inproceedings{cao2026c,
+  title={C-Free-Uniform: A Map-Conditioned Trajectory Sampler for Model Predictive Path Integral Control},
+  author={Cao, Yukang and Moorthy, Rahul and Poyrazoglu, O Goktug and Isler, Volkan},
+  booktitle={2026 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={13986--13993},
+  year={2026},
+  organization={IEEE}
 }
 ```
 
